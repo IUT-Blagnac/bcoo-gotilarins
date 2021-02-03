@@ -1,5 +1,11 @@
+@startuml
+class Point{
+  float x;
+  float y;
+}
 class Ligne{
 	Point a;
 	Point b;
 }
-@endhml
+Ligne "0..*" -- "2" Point
+@enduml
