@@ -17,11 +17,12 @@ class Enseignants{
 class  Cours {
   titre
   code module
-  }
+  } 
+  
 
-Etudiant -- Cours
-Etudiant -- Examens
-Cours -- Enseignants
-Cours -- Examens
+Etudiant "*" -- "1"Cours
+Etudiant "*" -- "*" Examens
+Cours "1..*" -- "0..1" Enseignants
+Cours "1..1" -- "1..1" Examens
 
 @enduml
