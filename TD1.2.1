@@ -26,10 +26,10 @@ class Noter {
   }
   
 
-Etudiant "*" -- "1..*"Cour
-Etudiant "*" -- "*" Examen
-Cour "1..*" -- "0..1" Enseignant
-Cour "1..1" -- "1..1" Examen
+Etudiant "1..*" -- "0..*"Cour
+Etudiant "1..*" -- "0..*" Examen
+Cour "*" -- "1" Enseignant
+Cour  --  Examen
 (Etudiant, Examen) . Noter
 
 @enduml
