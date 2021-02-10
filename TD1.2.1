@@ -8,12 +8,8 @@ class Etudiant{
 class Examens{
   date
   coefficient
-  }
-
-class Noter{
   note
   }
-
 class Enseignants{
   nom
   prenom
@@ -23,5 +19,9 @@ class  Cours {
   code module
   }
 
+Etudiant -- Cours
+Etudiant -- Examens
+Cours -- Enseignants
+Cours -- Examens
 
 @enduml
