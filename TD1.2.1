@@ -3,6 +3,7 @@ hide circle
 hide empty attributes
 
 class Etudiant{
+  idNumeroEtudiant
   numero
   nom
   prenom
@@ -11,7 +12,6 @@ class Etudiant{
 class Examen{
   date
   coefficient
-  note
   }
 class Enseignant{
   nom
@@ -21,11 +21,15 @@ class  Cour{
   titre
   code module
   } 
+class Noter {
+  note
+  }
   
 
 Etudiant "*" -- "1..*"Cour
 Etudiant "*" -- "*" Examen
 Cour "1..*" -- "0..1" Enseignant
 Cour "1..1" -- "1..1" Examen
+(Etudiant, Examen) . Noter
 
 @enduml
