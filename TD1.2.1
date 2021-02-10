@@ -1,28 +1,31 @@
 @startuml
+hide circle
+hide empty attributes
+
 class Etudiant{
   numero
   nom
   prenom
   dateNaissance
   }
-class Examens{
+class Examen{
   date
   coefficient
   note
   }
-class Enseignants{
+class Enseignant{
   nom
   prenom
   }
-class  Cours {
+class  Cour{
   titre
   code module
   } 
   
 
-Etudiant "*" -- "1"Cours
-Etudiant "*" -- "*" Examens
-Cours "1..*" -- "0..1" Enseignants
-Cours "1..1" -- "1..1" Examens
+Etudiant "*" -- "1..*"Cour
+Etudiant "*" -- "*" Examen
+Cour "1..*" -- "0..1" Enseignant
+Cour "1..1" -- "1..1" Examen
 
 @enduml
