@@ -1,0 +1,27 @@
+@startuml
+hide circle
+hide empty attributes
+
+class Portable {
+  prixAchat
+  valeurActuelle
+  }
+
+class Clavier {
+  type
+  }
+
+class Touche {
+  }
+
+class Proprietaire{
+  nom
+  prenom
+  }
+
+Portable "1" -- "0..1" Proprietaire
+Portable "1" -- "1" Clavier
+Clavier "1" -- "*" Touche
+
+
+@enduml
