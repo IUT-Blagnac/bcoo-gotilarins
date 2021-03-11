@@ -1,0 +1,43 @@
+# PlantUML Editor
+
+
+
+@startuml
+
+class Proprietaire
+{
+  nom
+  adresse
+}
+
+
+class Chien
+{
+  nom_chien
+  date_naissance
+  sexe
+  date_aquisition
+}
+
+class Race
+{
+  libelé
+}
+
+class Concour
+{
+  date_concours
+}
+
+class Ville
+{
+  nom_ville
+  date_Organisation
+}
+
+
+Proprietaire "0..*" -- "1..10" Chien : Posseder
+Chien "2..*" -- "0..*" Concour : participer
+Concour "1" - "1" Ville : organiser
+Chien "1" - "1" Race
+@enduml
