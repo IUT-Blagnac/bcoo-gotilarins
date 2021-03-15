@@ -45,11 +45,10 @@ class Enseignant {
 
 Stage "*" -- "1" Entreprise
 Stage -"1" Promotion
-Stage --"0..1" Tuteur
+Stage --"0..1 tuteur" Enseignant
 
 Etudiant -"1" GroupeTP
 GroupeTP -"1" GroupeTD
 GroupeTD --"1" Promotion
-Tuteur -|> Enseignant
 
 @enduml
