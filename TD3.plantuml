@@ -1,1 +1,22 @@
+@startuml
+hide circle
+hide empty methods
+hide empty attributes
 
+class Stage{
+    lieu
+    dateDebut
+    dateFin
+    nomTuteur
+    theme
+}
+
+class Entreprise{
+    nom
+    adresse
+    siegeSocial
+}
+
+Stage "*" - "1" Entreprise
+
+@enduml
