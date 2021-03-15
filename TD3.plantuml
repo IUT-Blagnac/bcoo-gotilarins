@@ -7,8 +7,9 @@ class Stage{
     lieu
     dateDebut
     dateFin
-    nomTuteur
+    nomTuteurEntreprise
     theme
+    noteStage
 }
 
 class Entreprise{
@@ -17,6 +18,38 @@ class Entreprise{
     siegeSocial
 }
 
-Stage "*" - "1" Entreprise
+class Promotion{
+ 
+}
+
+class Etudiant{
+    numINE
+    nom
+    prenom
+    moyenneGenerale
+}
+
+class GroupeTP{
+    nom
+}
+
+class GroupeTD{
+    nom
+}
+
+class Enseignant {
+    nom
+    prenom
+    specialite
+}
+
+Stage "*" -- "1" Entreprise
+Stage -"1" Promotion
+Stage --"0..1" Tuteur
+
+Etudiant -"1" GroupeTP
+GroupeTP -"1" GroupeTD
+GroupeTD --"1" Promotion
+Tuteur -|> Enseignant
 
 @enduml
