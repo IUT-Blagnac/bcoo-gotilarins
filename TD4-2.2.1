@@ -1,0 +1,20 @@
+@startuml
+actor Client
+actor Vendeur
+usecase esArt as (essayer_un_article)
+usecase demRens as (demander_un_renseignement)
+usecase pay as (payer)
+usecase payCart as (payer_par_carte)
+usecase payEsp as (payer_par_espèce)
+usecase reduc as (reduction)
+
+
+Client -> esArt
+Client --> demRens
+demRens --> Vendeur
+Client --> pay
+pay ..> payCart 
+pay ..> payEsp
+payEsp --> reduc
+payCart --> reduc
+@enduml
