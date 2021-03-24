@@ -7,13 +7,21 @@ usecase pay as (payer)
 usecase payCart as (payer_par_carte)
 usecase payEsp as (payer_par_espèce)
 usecase reduc as (reduction)
+usecase in as (rentrer)
+usecase go as (passer_dans_un_rayon)
+
 
 Client -> esArt
 Client --> demRens
+Client --> in
+Client --> go
 demRens --> Vendeur
 Client --> pay
-payCart  ..> "<<extends>>" pay
-payEsp  ..> "<<extends>>" pay
-payEsp ->  reduc
+
+reduc <- payEsp
 payCart ->  reduc
+payCart ..> "<<extends>>" pay
+payEsp  ..> "<<extends>>" pay
+
+
 @enduml
