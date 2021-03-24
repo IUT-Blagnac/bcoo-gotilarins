@@ -13,8 +13,8 @@ Client -> esArt
 Client --> demRens
 demRens --> Vendeur
 Client --> pay
-pay ..> payCart 
-pay ..> payEsp
-payEsp --> reduc
-payCart --> reduc
+payCart  ..> "<<extends>>" pay
+payEsp  ..> "<<extends>>" pay
+payEsp ->  reduc
+payCart ->  reduc
 @enduml
