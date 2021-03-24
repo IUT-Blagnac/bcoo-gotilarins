@@ -10,16 +10,14 @@ usecase reduc as (reduction)
 usecase in as (rentrer)
 usecase go as (passer_dans_un_rayon)
 
-
-Client -> esArt
-Client --> demRens
+go ..> "<<extends>>" in
+demRens ..> "<<extends>>" go 
+esArt ..> "<<extends>>" go
 Client --> in
-Client --> go
-demRens --> Vendeur
 Client --> pay
 
-reduc <- payEsp
-payCart ->  reduc
+reduc "<<include>>" <. payEsp
+payCart .> "<<include>>"  reduc
 payCart ..> "<<extends>>" pay
 payEsp  ..> "<<extends>>" pay
 
