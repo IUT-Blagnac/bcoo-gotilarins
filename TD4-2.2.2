@@ -20,10 +20,10 @@ Client --> pay
 go <.. "<<extends>>" prd
 prd ..> "<<include>>" verif
 
-reduc "<<include>>" <. payEsp
-payCart .> "<<include>>"  reduc
-payCart ..> "<<extends>>" pay
-payEsp  ..> "<<extends>>" pay
+reduc "<<extends>>" .> payEsp
+reduc "<<extends>>" .> payCart
+payCart --|>  pay
+payEsp  --|>  pay
 
 
 @enduml
