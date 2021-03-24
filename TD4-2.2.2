@@ -9,12 +9,16 @@ usecase payEsp as (payer_par_espèce)
 usecase reduc as (reduction)
 usecase in as (rentrer)
 usecase go as (passer_dans_un_rayon)
+usecase prd as (prendre_un_article)
+usecase verif as (vérifier_le_stock)
 
 go ..> "<<extends>>" in
 demRens ..> "<<extends>>" go 
 esArt ..> "<<extends>>" go
 Client --> in
 Client --> pay
+go <.. "<<extends>>" prd
+prd ..> "<<include>>" verif
 
 reduc "<<include>>" <. payEsp
 payCart .> "<<include>>"  reduc
