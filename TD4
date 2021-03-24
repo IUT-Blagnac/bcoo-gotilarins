@@ -1,5 +1,5 @@
 @startuml
-usecase "reserver"
+usecase "reserver_salle"
 usecase "consulter_Planing"
 usecase "consulter_Recapitulatif"
 usecase "editer_Recapitulatif"
@@ -9,7 +9,7 @@ actor Enseignant_Responsable
 
 
 Enseignant_Responsable -|> Enseignant
-Enseignant -> reserver
+Enseignant -> reserver_salle
 Enseignant--> consulter_Planing
 Etudiant--> consulter_Planing
 Enseignant --> consulter_Recapitulatif
