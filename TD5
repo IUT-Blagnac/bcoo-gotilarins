@@ -7,7 +7,7 @@ participant Cser as "Caissier"
 participant Cse as "Caisse"
 participant Tap as "Tapis"
 participant Art as "a:Article"
-participant Banq as "Banque"
+
 participant Imp as "Imprimante"
 
 Cli -> Cser : arriver
@@ -34,23 +34,10 @@ Cser -> Cse : fin
 Cse --> Cli : montant total
 Cse --> Cser : montant total
 Cser --> Cli : annonce montant total
-opt "Paiement en Liquide"
-  Cli --> Cser : payer
-  Cser --> Cli : encaisser
-  Cse --> Cser : afficher montant à rendre
-  Cser --> Cli : rendre la monnaie
-end
-opt "Paiement par Chèque"
-  Cser --> Cli : saisie num carte ID
-  Cli --> Cser : payer
-end
-opt "Paiement par Carte de crédit"
-  Cse --> Banq : demande autorisation
-  opt "Solde sufisant"
-    Banq --> Cse : autorisation paiement
-    Cli --> Cser : payer
-  end
-end
+Cli --> Cser : payer
+Cser --> Cli : encaisser
+Cse --> Cser : afficher montant à rendre
+Cser --> Cli : rendre la monnaie
 Cse --> Cse : enregistrer vente
 Cse --> Imp : Imprimer
 Cser -> Imp : Prendre le ticket
