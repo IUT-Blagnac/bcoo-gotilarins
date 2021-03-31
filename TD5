@@ -1,47 +1,54 @@
 @startuml
 
-autonumber
+'autonumber
 hide footbox
-participant Cli as "Client"
-participant Cser as "Caissier"
-participant Cse as "Caisse"
-participant Tap as "Tapis"
-participant Art as "a:Article"
 
-participant Imp as "Imprimante"
+participant A as ":Client"
+participant B as ":Caissier"
 
-Cli -> Cser : arriver
-activate Cser
-Cli -> Tap : deposerArticles
-activate Tap
+participant C as ":Caisse"
+A -> B: arrive
+activate B
+
+participant Tapis as ":Tapis"
+
+A -> Tapis: deposerArticles
+activate Tapis
 
 loop "Pour chaque article a"
-  Cser -> Tapis : prendreArticle
-  Cser -> Cse : scan(a)
-  activate Cse
-  Cse --> Art : getPrix(a)
-  Cse --> Art : getLibellé(a)
+  B -> Tapis: prendreArticle
+  B -> C: scan(a)
+  activate C
+  
+  participant Article as "a:Article"
+  
+  par
+  C --> Article: getPrix()
+  C --> Article: getLibellé()
 
-  opt "Quantité > 1"
-    Cser --> Cse : saisir(Qté)
+  else
+  opt "qté > 1"
+    B -> C: saisir(Qté)
   end
-Cse --> Cli : prix et libelé
-Cse --> Cser : prix et libelé
+  end
+  C --> A: prix et libellé
+  C --> B: prix et libellé
+
+  C -> C: montantTotal += prix * qté
 end
 
-Cser -> Cse : fin
+  B -> C: fin
+  C --> B: montant total
+  B --> A: montant total
 
-Cse --> Cli : montant total
-Cse --> Cser : montant total
-Cser --> Cli : annonce montant total
-Cli --> Cser : payer
-Cser --> Cli : encaisser
-Cse --> Cser : afficher montant à rendre
-Cser --> Cli : rendre la monnaie
-Cse --> Cse : enregistrer vente
-Cse --> Imp : Imprimer
-Cser -> Imp : Prendre le ticket
-Cser --> Cli : donner le ticket
+  A -> B : payer en liquide (s)
+  B -> C : encaisser (s)
 
+  C --> B : reste à rendre
+  B -> A : rendre (reste)
 
+  C -> C : enregistrer
+  C --> B : imprimer ticket
+
+  B --> A : donner ticket
 @enduml
