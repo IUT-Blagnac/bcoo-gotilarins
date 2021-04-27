@@ -1,12 +1,27 @@
-public static getPayeArtisan(String pfNomArtisant, String pfidChantier){
+public class Artisan{
+
+private String idSIRET;
+private String nomArt;
+private String adresseArt;
+private String tphArt;
+
+private Qualification maQualif;
+private ArrayList<Realiser> mesReals;
+
+
+public static getPayeArtisan(Chantier pfChantier){
   double paye = 0;
-  Artisant A = getArtisant(pfNomArtisant);
-  Chantier C = getChantier(idChantier);
-      for(int y = 0; y<A.ArrayListRealiser.size ; y++){
-          if(A.ArrayListRealiser.get(y).idChantier == pfidChantier){
-              paye += A.getTauxHoraire() * A.ArrayListRealiser.get(y).getDureeReal();
+      for(int y = 0; y< this.mesReals.size() ; y++){
+          if(this.mesReals.get(y).idChantier == pfChantier.idChantier){
+              paye += this.getTauxHoraire() * this.get(y).getDureeReal();
           }
           
       }
  return paye;
 }
+
+}
+
+
+
+
