@@ -1,0 +1,12 @@
+public static getPayeArtisan(String pfNomArtisant, String pfidChantier){
+  double paye = 0;
+  Artisant A = getArtisant(pfNomArtisant);
+  Chantier C = getChantier(idChantier);
+      for(int y = 0; y<A.ArrayListRealiser.size ; y++){
+          if(A.ArrayListRealiser.get(y).idChantier == pfidChantier){
+              paye += A.getTauxHoraire() * A.ArrayListRealiser.get(y).getDureeReal();
+          }
+          
+      }
+ return paye;
+}
