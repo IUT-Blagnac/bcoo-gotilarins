@@ -1,0 +1,24 @@
+@startuml
+hide footbox
+
+participant Conta as "Contabilité"
+participant Prog as "Programme Principal"
+
+autonumber
+
+Conta -> Prog: getPayeArtisan(pfNomArtisant, pfidChantier)
+
+activate Prog
+
+Prog -> Prog: getArtisant(pfNomArtisant)
+  loop "Pour chaque Réalisation i"
+      opt "A.ArrayListRealiser.get(y).idChantier == pfidChantier"
+            Prog -> Prog: addPaye(A.getTauxHoraire() * A.ArrayListRealiser.get(y).getDureeReal())
+      end
+  end
+
+Prog -> Conta: return paye
+
+deactivate Prog
+
+@enduml
